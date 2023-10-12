@@ -1,0 +1,60 @@
+<!DOCTYPE html> 
+<html lang="en"> 
+<head> 
+    <meta charset="UTF-8"> 
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> 
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> 
+     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> 
+    <title>Document</title> 
+</head> 
+ 
+<body> 
+  
+    <table class="table"> 
+        <thead class="thead-dark"> 
+          <tr> 
+            <th scope="col" class="t1">Logo</th> 
+            <th scope="col" class="t1">Informacion</th> 
+          </tr> 
+        </thead> 
+        <tbody> 
+            <tr *ngFor="let op of resultado.comics">
+                <th scope="row" class="cont">
+                    <div *ngIf="op.editorial == 'MARVEL'">
+                        <img src="./assets/img/marvel.png" class="imagen">
+                    </div>
+                    <div *ngIf="op.editorial == 'DC'">
+                        <img src="./assets/img/DC.jpg" class="dcimagen">
+                    </div>
+                    <div *ngIf="op.editorial == 'IMAGE'">
+                        <img src="./assets/img/IMAGEC.jpg" class="Iimagen">
+                    </div>
+                </th> 
+                <td>
+                    <div class="titulo">{{op.nombre}}</div>
+                    <div class="year">{{op.anio_imp}}</div>
+                    <div class="descripcion">{{op.sinopsis}}</div>
+                </td> 
+           
+                <td><button class="btn" (click)="Modificar(op.id, op.nombre, op.anio_imp, op.sinopsis, op.editorial)">
+                    <img src="./assets/img/edit.png" width="50px" class="img">
+                </button></td> 
+                <td><button class="btn" (click)="DeleteComic(op.id)">
+                    <img src="./assets/img/basura.png" width="50px" class="img">
+                </button></td> 
+            </tr> 
+        </tbody> 
+    </table>
+    
+    <div id="pos">
+        <mat-card-actions id="cont3">
+            <button mat-button (click)="Volver()">Volver</button>
+        </mat-card-actions>
+    </div>
+
+</body>
+
+</html>
+

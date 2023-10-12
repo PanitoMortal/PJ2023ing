@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <mat-toolbar class="header">
+        <div id="imagenes">
+
+            <mat-card id="img1" >
+                <img id="logo" mat-card-image src="../../../assets/img/LogoPJimg.png">
+            </mat-card>
+    
+            <mat-card id="img" >
+                <button id="principal" (click)="principal()"><img id="logo" mat-card-image src="../../../assets/img/nombrelogo.png"></button>
+            </mat-card>
+        </div>
+
+      
+        <section id="opciones">
+            <div>
+                <button mat-raised-button id="info">Acerca de</button>
+            </div>
+            <div>
+                <button mat-raised-button id="receta">Recetas Populares</button>
+            </div>
+
+            <div>
+                <button mat-raised-button id="videos">Videos</button>
+            </div>
+
+            <div>
+                <button mat-raised-button id="categorias">Explorar</button>
+            </div>
+
+        </section>
+        
+        <section id="btn">
+            <div>
+                <button mat-raised-button (click)="login()" id="login">Iniciar Sesion</button>
+            </div>
+            <div>
+                <button mat-raised-button (click)="NewUsuario()" id="register">Registrate</button>
+            </div>
+        </section>
+
+      </mat-toolbar>
+      
+      <div id="searchForm">
+        <div>
+            <mat-form-field class="example-chip-list">
+            <mat-label>Ingredients</mat-label>
+            <mat-chip-grid #chipGrid aria-label="Ingredient selection">
+                <mat-chip-row *ngFor="let ingredient of ingredients" (removed)="remove(ingredient)">
+                {{ingredient}}
+                <button matChipRemove [attr.aria-label]="'remove ' + ingredient">
+                    <mat-icon>cancel</mat-icon>
+                </button>
+                </mat-chip-row>
+            </mat-chip-grid>
+            <input placeholder="New Ingredient..." #ingredientInput [formControl]="ingredientCtrl"
+                [matChipInputFor]="chipGrid" [matAutocomplete]="auto"
+                [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                (matChipInputTokenEnd)="add($event)"/>
+            <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)">
+                <mat-option *ngFor="let ingredient of filteredIngredients | async" [value]="ingredient">
+                {{ingredient}}
+                </mat-option>
+            </mat-autocomplete>
+            </mat-form-field>
+        </div>
+        <div class="example-button-container">
+            <button mat-mini-fab color="primary" aria-label="Example icon button with a plus one icon" (click)="searchIngredient()" id="buttonSearch">
+                <mat-icon>search</mat-icon>
+            </button>
+        </div>
+      </div>
+
+      <div *ngFor="let receta of info" id="container">
+        <div class="recetas">
+            <h1> {{receta.title}}</h1><br>
+            <img src="{{receta.image}}" width="400"><br>
+            <div class="summary" [innerHTML]="(receta.summary|slice:0:300)+'...'"></div>
+            <button mat-raised-button color="primary" (click)="goToRecipe(receta.id)">Ver Receta -></button>
+        </div>
+
+      </div>
+
+      
+</body>
+</html>

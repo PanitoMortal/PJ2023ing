@@ -1,0 +1,98 @@
+<!DOCTYPE html> 
+<html lang="en"> 
+<head> 
+    <meta charset="UTF-8"> 
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> 
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> 
+     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> 
+    <title>Document</title> 
+</head> 
+ 
+<body *ngIf="!loading"> 
+    <mat-card class="example-card" id="contenido">
+      <h1 id="titulo">Nuevo Usuario</h1>
+      <div id="DatosPersonales">
+        <!-- ------------------------------------------------------------------------------------------------------------------------>
+        <div class="dropzone" id="upload">
+          <input type="file" (change)="onFileSelected($event)" #fileInput/>
+          <img *ngIf="imageUrl" [src]="imageUrl" alt="" />
+          <label for="fileDropRef">Subir imagen para avatar</label>
+        </div>
+          <!-- ------------------------------------------------------------------------------------------------------------------------>
+        <mat-card-content id="cont">
+          <div id="formulario" >
+            <mat-form-field class="control" class="ancho">
+              <mat-label>Nombre Completo</mat-label>
+              <mat-icon matPrefix>person</mat-icon>
+              <input type="text" matInput [(ngModel)]="name">
+            </mat-form-field>
+          </div>
+
+          <div id="formulario" >
+            <mat-form-field class="control" class="ancho">
+              <mat-label>Fecha de Nacimiento</mat-label>
+              <mat-icon matPrefix>lock</mat-icon>
+              <input type="date" matInput [(ngModel)]="date">
+            </mat-form-field>
+          </div>
+
+          <div id="botnn">
+            <div id="sexo">
+              <div id="genero">
+                <mat-icon matPrefix>man</mat-icon>
+                <mat-icon matPrefix>woman</mat-icon>
+              </div>
+              <mat-label>Sexo</mat-label>
+            </div>
+            <div id="cuerpo">
+                <mat-radio-group [(ngModel)]="gender" class="radio">
+                    <mat-radio-button value="M" class="radioB">Masculino</mat-radio-button>
+                    <mat-radio-button value="F" class="radioB">Femenino</mat-radio-button>
+                </mat-radio-group>
+            </div>
+        </div>
+        </mat-card-content>
+      </div>
+
+      <div id="DatosUsuario">
+        <mat-card-content id="cont">
+          <div id="DUsuario" >
+            <mat-form-field class="control" class="ancho">
+              <mat-label>Usuario</mat-label>
+              <mat-icon matPrefix>person</mat-icon>
+              <input type="text" matInput [(ngModel)]="username">
+            </mat-form-field>
+          </div>
+
+          <div id="Dpass" >
+            <mat-form-field class="control" class="ancho">
+              <mat-label>Password</mat-label>
+              <mat-icon matPrefix>password</mat-icon>
+              <input type="password" matInput [(ngModel)]="password" required minlength="6">
+            </mat-form-field>
+          </div>
+
+        </mat-card-content>
+      </div>
+      <!-- ------------------------------------------------------------------------------------------------------------------------>
+  
+
+      <mat-card-actions id="cont2" class="btn2">
+        <button mat-button (click)="addUser()">Registrar</button>
+      </mat-card-actions>
+      <!--
+
+        <mat-card-actions id="cont2" class="btn2">
+          <button mat-button (click)="Volver()">Volver</button>
+        </mat-card-actions>
+      --> 
+  
+       <!-- ------------------------------------------------------------------------------------------------------------------------>
+    </mat-card>
+
+</body>
+<app-spinner *ngIf="loading"></app-spinner>
+
+</html>

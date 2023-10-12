@@ -1,0 +1,48 @@
+<!DOCTYPE html> 
+<html lang="en"> 
+<head> 
+    <meta charset="UTF-8"> 
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <title>Document</title> 
+</head> 
+ 
+<body *ngIf="!loading"> 
+
+  <mat-card id="contenidoimg" >
+    <img id="logo" mat-card-image src="../../../assets/img/LogoPJ.png">
+  </mat-card>
+
+    <mat-card class="example-card" id="contenido">
+        
+      <h1 id="titulo">Login</h1>
+        <mat-card-content id="cont">
+            <div id="formulario" >
+              <mat-form-field class="control" class="ancho">
+                <mat-label>User</mat-label>
+                <mat-icon matPrefix>person</mat-icon>
+                <input type="text" matInput [(ngModel)]="username">
+              </mat-form-field>
+            </div>
+
+            <div id="formulario" >
+                <mat-form-field class="control" class="ancho">
+                  <mat-label>Password</mat-label>
+                  <mat-icon matPrefix>password</mat-icon>
+                  <input type="password" matInput [(ngModel)]="password" required minlength="6">
+                </mat-form-field>
+              </div>
+        </mat-card-content>
+
+        <mat-card-actions id="cont2">
+          <button mat-button (click)="login()" class="btnLog">Ingresar al Sistema</button>
+        </mat-card-actions>
+        <mat-card-actions id="cont3">
+          <button mat-button (click)="NewUsuario()" class="btnLog">Registrar Usuario</button>
+        </mat-card-actions>
+      </mat-card>
+    
+</body>
+
+<app-spinner *ngIf="loading"></app-spinner>
+</html>

@@ -1,0 +1,63 @@
+.example-button-row {
+  display: table-cell;
+  max-width: 600px;
+}
+
+body{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-image: url('../../../assets/img/eat.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  
+  
+}
+#contenidoimg{
+  background-color: transparent;
+  margin: 70px 0px 10px 0px;
+  #logo{
+    width: 300px;
+    height: 200px;
+  }
+}
+
+#contenido{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  align-content: center;
+  background-color: rgba(0, 0, 0, 0.5);
+  //width: 250px;
+ 
+  #titulo{
+    font-style: italic;
+    color: white;
+  }
+
+  #cont{
+
+  }
+
+  #cont2 button{
+    color: white;
+  }
+
+  #cont3 button{
+    color: white;
+  }
+}
+
+
+
+.ancho{
+  width: 500px;
+}
+
+.btnLog{
+  background-color: rgba(237, 104, 15, 0.6);
+  border-radius: 20px;
+  width: 180px;
+  height: 45px;
+}

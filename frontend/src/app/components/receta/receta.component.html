@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <mat-toolbar class="header">
+        <div id="imagenes">
+
+            <mat-card id="img1" >
+                <img id="logo" mat-card-image src="../../../assets/img/LogoPJimg.png">
+            </mat-card>
+    
+            <mat-card id="img" >
+                <button id="principal" (click)="principal()"><img id="logo" mat-card-image src="../../../assets/img/nombrelogo.png"></button>
+            </mat-card>
+        </div>
+
+      
+        <section id="opciones">
+            <div>
+                <button mat-raised-button id="info">Acerca de</button>
+            </div>
+            <div>
+                <button mat-raised-button id="receta">Recetas Populares</button>
+            </div>
+
+            <div>
+                <button mat-raised-button id="videos">Videos</button>
+            </div>
+
+            <div>
+                <button mat-raised-button id="categorias" (click)="explorar()">Explorar</button>
+            </div>
+
+        </section>
+        
+        <section id="btn">
+            <div>
+                <button mat-raised-button (click)="login()" id="login">Iniciar Sesion</button>
+            </div>
+            <div>
+                <button mat-raised-button (click)="NewUsuario()" id="register">Registrate</button>
+            </div>
+        </section>
+
+      </mat-toolbar>
+      
+      <div id="container">
+        <div class="recetas">
+            <h1> {{info.title}}</h1><br>
+            <img src="{{info.image}}" width="400"><br>
+            <div class="summary" [innerHTML]="info.summary"></div><br><br>
+            <b style="font-size: large;">Instructions: </b>
+            <div class="instructions" [innerHTML]="info.instructions"></div><br>
+            <b style="font-size: large;">Ingredients: </b>
+            <div class="ingredients" *ngFor="let ingredient of info.extendedIngredients">
+                <div class="ingredient">
+                    <img src="https://spoonacular.com/cdn/ingredients_100x100/{{ingredient.image}}" width="100"><br>
+                    {{ingredient.name}}
+                </div>
+            </div>
+        </div>
+        
+    </div>
+
+
+
+
+
+
+      
+</body>
+</html>

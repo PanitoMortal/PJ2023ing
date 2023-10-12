@@ -1,0 +1,52 @@
+body {
+  background-image: url("../../../assets/img/eat.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+
+.toolbar-item-spacer {
+  flex: 1 1 auto;
+}
+
+.app-container {
+  height: 90%;
+  margin: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+}
+
+.app-sidenav {
+  width: 230px;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+}
+
+.app-sidenav-content {
+  display: flex;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+}
+
+.x {
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+}
+
+.toolbar {
+  background-color: rgba(237, 104, 15, 0.6);
+  color: white;
+}
+
+.a {
+  color: white;
+}
+
+.d {
+  color: white;
+}
+
+.icon {
+  background-color: rgba(0, 0, 0, 0.5);
+}/*# sourceMappingURL=menu.component.css.map */

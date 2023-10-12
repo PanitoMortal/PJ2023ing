@@ -1,0 +1,120 @@
+.example-button-row {
+  display: table-cell;
+  max-width: 600px;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-image: url("../../../assets/img/eat.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+
+#contenido {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  align-content: center;
+  margin: 110px 0px;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+#contenido #titulo {
+  font-style: italic;
+  color: white;
+}
+#contenido #DatosPersonales {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+#contenido #DatosPersonales #botnn {
+  display: flex;
+  flex-direction: row;
+  -moz-column-gap: 19px;
+       column-gap: 19px;
+  background-color: white;
+  width: 500px;
+  border-radius: 5px;
+}
+#contenido #DatosPersonales #botnn #sexo {
+  font-size: 15px;
+  font-style: inherit;
+  margin: 19px 0px 2px 4px;
+  width: 90px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  -moz-column-gap: 5px;
+       column-gap: 5px;
+}
+#contenido #DatosPersonales #botnn #cuerpo {
+  color: white;
+}
+#contenido #DatosUsuario #cont {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  -moz-column-gap: 10px;
+       column-gap: 10px;
+}
+.ancho {
+  width: 500px;
+}
+
+.radio mat-radio-button {
+  margin-right: 60px;
+}
+
+.btn2 button {
+  margin: 0px 0px 20px 14px;
+  border-radius: 50PX;
+  width: 200px;
+  height: 50px;
+  background-color: rgba(237, 104, 15, 0.6);
+  color: white;
+  transform: scale(1.05);
+}
+
+.dropzone {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 450px;
+  height: 240px;
+  padding: 2rem;
+  text-align: center;
+  border: dashed 1px #979797;
+  position: relative;
+  margin: 0 auto;
+  justify-content: center;
+}
+.dropzone input {
+  opacity: 0;
+  position: absolute;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+}
+.dropzone label {
+  color: white;
+  width: 210px;
+  height: 50px;
+  border-radius: 21.5px;
+  background-color: rgba(220, 37, 27, 0.6);
+  padding: 8px 16px;
+  align-items: center;
+}
+.dropzone img {
+  width: 350px;
+  height: 170px;
+}
+.dropzone h3 {
+  font-size: 20px;
+  font-weight: 600;
+  color: white;
+}/*# sourceMappingURL=user.component.css.map */

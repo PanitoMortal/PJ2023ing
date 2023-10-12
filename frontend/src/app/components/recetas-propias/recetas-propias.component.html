@@ -1,0 +1,103 @@
+<!DOCTYPE html> 
+<html lang="en"> 
+<head> 
+    <meta charset="UTF-8"> 
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> 
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> 
+     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> 
+    <title>Document</title> 
+</head> 
+ 
+<body> 
+    <mat-card class="example-card" id="contenido">
+      <h1 id="titulo">Subir Receta</h1>
+      <div id="DatosPersonales">
+        <!-- ------------------------------------------------------------------------------------------------------------------------>
+        <div class="dropzone" id="upload">
+          <input type="file" (change)="onFileSelected($event)" #fileInput/>
+          <img *ngIf="imageUrl" [src]="imageUrl" alt="" />
+          <label for="fileDropRef">Subir imagen de la receta</label>
+        </div>
+          <!-- ------------------------------------------------------------------------------------------------------------------------>
+        <mat-card-content id="cont">
+          <div id="formulario" >
+            <mat-form-field class="control" class="ancho">
+              <mat-label>Nombre de la receta</mat-label>
+              <!--<mat-icon matPrefix>person</mat-icon>-->
+              <input type="text" matInput [(ngModel)]="name">
+            </mat-form-field>
+          </div>
+
+ 
+
+
+        </mat-card-content>
+      </div>
+
+      <div id="DatosUsuario">
+        <mat-card-content id="cont">
+            <div id="DUsuario" >
+                <mat-form-field class="control" class="anchoDes">
+                <mat-label>Descripcion</mat-label>
+                <input type="text" matInput [(ngModel)]="descripcion">
+                </mat-form-field>
+            </div>
+        
+            <div id="Dpass" >
+                <mat-form-field class="control" class="anchoDes">
+                <mat-label>Ingredietes</mat-label>
+                <input type="text" matInput [(ngModel)]="ingredientes" (keyup.enter)="agregarElemento()">
+                </mat-form-field>
+             </div>
+
+            <!------------------------------------------------------------------------------------------------------------------------>
+            <ng-container *ngIf="dataSource && dataSource.length > 0">
+
+                <mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+                    <!-- Name Column -->
+                    <ng-container matColumnDef="Ingredientes">
+                      <mat-header-cell *matHeaderCellDef> Ingredientes </mat-header-cell>
+                      <mat-cell *matCellDef="let element"> {{element}} </mat-cell>
+                    </ng-container>
+    
+                    <ng-container matColumnDef="Eliminar">
+                        <mat-header-cell *matHeaderCellDef> Eliminar </mat-header-cell>
+                        <mat-cell *matCellDef="let element"> 
+                            <button mat-button (click)="Eliminar(element)"><img src="../../../assets/img/basura.png" class="img" /></button>
+         
+                        </mat-cell>
+                    </ng-container>
+    
+                    <ng-container matColumnDef="Editar">
+                        <mat-header-cell *matHeaderCellDef> Editar </mat-header-cell>
+                        <mat-cell *matCellDef="let element"> 
+                            <button mat-button (click)="Editar(element)"><img src="../../../assets/img/edit.png" class="img" /></button>    
+                        </mat-cell>
+                    </ng-container>
+    
+    
+                    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+                    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+         
+                </mat-table>
+            </ng-container>
+
+            <!------------------------------------------------------------------------------------------------------------------------>
+        </mat-card-content>
+      </div>
+      <!-- ------------------------------------------------------------------------------------------------------------------------>
+  
+
+        <mat-card-actions id="cont2" class="btn2">
+            <button mat-button (click)="NewUsuario('0ms', '0ms')">Registrar</button>
+        </mat-card-actions>
+  
+       <!-- ------------------------------------------------------------------------------------------------------------------------>
+    </mat-card>
+    
+
+</body>
+
+</html>

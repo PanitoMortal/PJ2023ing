@@ -1,0 +1,69 @@
+body {
+  background-image: url("../../../assets/img/Elder.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+
+.imagen {
+  width: 120px;
+  height: 70px;
+  display: block;
+  margin: auto;
+}
+
+.dcimagen {
+  width: 150px;
+  height: 110px;
+  display: block;
+  margin: auto;
+}
+
+.Iimagen {
+  width: 150px;
+  height: 100px;
+  display: block;
+  margin: auto;
+}
+
+.btn {
+  background-color: transparent;
+  border: none;
+  padding: 0;
+  width: 80px;
+  height: 80px;
+}
+
+.img {
+  width: 80px;
+  height: 80px;
+}
+
+.titulo {
+  color: white;
+  font-size: 22px;
+}
+
+.year {
+  color: white;
+  font-size: 12px;
+}
+
+.descripcion {
+  color: white;
+  font-size: 12px;
+}
+
+.t1 {
+  color: white;
+}
+
+#pos {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+#pos #cont3 button {
+  color: white;
+  font-size: 20px;
+}/*# sourceMappingURL=tabla.component.css.map */
