@@ -8,7 +8,9 @@ import  Multer  from "multer";
 export const newUser = async (req: Request, res: Response) => {
     console.log(req.body);
 
-    const { username } = req.body;
+    const { username }  = req.body;
+
+    const { avatar } = req.body;
 
 
     //VALIDACION SI UN USUARIO YA ESTA EN LA BASE DE DATOS
@@ -20,56 +22,60 @@ export const newUser = async (req: Request, res: Response) => {
     }
 
     
-    const path = require('path');
-    var filenameTimestamp: any;
-    const storage = Multer.diskStorage({
-        destination: path.join(__dirname, '../../galeria'),
-        filename: (req, file, cb): void => {
-            filenameTimestamp = Date.now();
-            cb(null, `${filenameTimestamp}-${file.originalname}`);
-        },
-    });
 
-    const upload = Multer({ storage: storage })
 
-    exports.upload = upload.single('image');
- 
-    exports.uploadFile = async (req: any, res: any) => {
-        try{
-            const avatar = `${filenameTimestamp}-${req.file.originalname}`;
-            console.log("Contenido de avatar" + avatar);
-            const { name, password, date, gender, username } = req.body;
-            const hashedPassword = await bcrypt.hash(password, 10);
-                //GUARDAR USUARIO
-            try {
-                await User.create({
-                    avatar: avatar,
-                    name: name,
-                    password: hashedPassword,
-                    date: date,
-                    gender: gender,
-                    username: username    
-                })
-            
-                res.json({
-                    msg: `User ${username} created successfully!`
-                })
-            } catch (error) {
-                console.log("Primer error" + error);
-                res.status(400).json({
-                    msg: 'Ocurrio un error',
-                    error
-                })
-            }
-        } catch(error) {
-            console.log("Segundo error" + error);
+    const matches = avatar.match(/^data:(.+);base64,(.+)$/);
+    const base64Image = matches[2];
+    const buffer = Buffer.from(base64Image, 'base64');
+    const fileExtension = matches[1].split('/')[1];
+    const fs = require('fs');
+    const timestamp = Date.now();
+    const fileName = `${timestamp}.${fileExtension}`;
+    fs.writeFile(__dirname+`../../galeria/${timestamp}.` + fileExtension, buffer, (err:any) => {
+        if (err) throw err;
+        console.log('The file has been saved!');
+      });
+    
+
+    try{
+        //const avatar = `${filenameTimestamp}-${req.file?.originalname}`;
+        //console.log("Contenido de avatar" + avatar);
+        const { name, password, date, gender, username } = req.body;
+        const hashedPassword = await bcrypt.hash(password, 10);
+            //GUARDAR USUARIO
+        try {
+            await User.create({
+                avatar: fileName,
+                name: name,
+                password: hashedPassword,
+                date: date,
+                gender: gender,
+                username: username    
+            })
+        
+            res.json({
+                msg: `User ${username} created successfully!`
+            })
+        } catch (error) {
+            console.log("Primer error" + error);
             res.status(400).json({
-                msg: 'Failed to load image',
+                msg: 'Ocurrio un error',
                 error
             })
         }
+    } catch(error) {
+        console.log("Segundo error" + error);
+        res.status(400).json({
+            msg: 'Failed to load image',
+            error
+        })
     }
+
+    
+
+
 }
+
 
 
 

@@ -11,9 +11,6 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.getUser = void 0;
 const user_1 = require("../models/user");
-const path = require("path");
-const parentDirectory = path.join(__dirname, '../../');
-const carpetaGaleria = path.join(parentDirectory, 'galeria');
 const getUser = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { username } = req.body;
     const userInfo = yield user_1.User.findOne({ where: { username: username } });
@@ -22,9 +19,7 @@ const getUser = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
             msg: `There is no user with the name ${username}`
         });
     }
-    const nombreVariable = userInfo.avatar;
-    const imagePath = path.join(carpetaGaleria, nombreVariable);
-    //const base64Data = base64Img.toBase64(imagePath);
+    console.log(userInfo);
     res.json({ userInfo });
 });
 exports.getUser = getUser;

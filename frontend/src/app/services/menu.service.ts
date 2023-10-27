@@ -19,10 +19,10 @@ export class MenuService {
     this.myApiUrl = 'menu';
   }
 
-  getMenu(username: any): Observable<any> {
+  getMenu(/* username: any */): Observable<any> {
 /*     const token = localStorage.getItem('token');
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`); */
     /* return this.http.get<any>(`${this.myAppUrl}${this.myApiUrl}`, { headers: headers }) */
-    return this.http.get<any>(`${this.myAppUrl}${this.myApiUrl}`, username);
+    return this.http.get<any>(`${this.myAppUrl}${this.myApiUrl}`/* , username */);
   }
 }

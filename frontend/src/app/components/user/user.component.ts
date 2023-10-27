@@ -22,8 +22,8 @@ export class UserComponent implements OnInit{
   gender: string = "";
   username: string = "";
   loading: boolean = false;
+  avatarBase64: string | null = null;
   
-
   avatar: File | null = null; // Para almacenar la imagen seleccionada
   imageUrl: string | ArrayBuffer | null = null; // Para mostrar la imagen
 
@@ -43,6 +43,7 @@ export class UserComponent implements OnInit{
       reader.readAsDataURL(selectedFile);
       reader.onload = () => {
         this.imageUrl = reader.result;
+        this.avatarBase64 = reader.result as string;
       };
     }
   }
@@ -59,14 +60,15 @@ export class UserComponent implements OnInit{
 
     //creacion del objeto
     const user: User = {
-      avatar: this.avatar,
+      avatar: this.avatarBase64,
       name: this.name,
       password: this.password,
       gender: this.gender,
       date: this.date,
       username: this.username
     }
-    console.log(this.avatar);
+
+
     this.loading = true;
     this._userService.signIn(user).subscribe({
       next: (v) => {

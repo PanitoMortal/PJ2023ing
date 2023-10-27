@@ -16,10 +16,10 @@ exports.loginUser = exports.newUser = void 0;
 const bcrypt_1 = __importDefault(require("bcrypt"));
 const user_1 = require("../models/user");
 const jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
-const multer_1 = __importDefault(require("multer"));
 const newUser = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     console.log(req.body);
     const { username } = req.body;
+    const { avatar } = req.body;
     //VALIDACION SI UN USUARIO YA ESTA EN LA BASE DE DATOS
     const user = yield user_1.User.findOne({ where: { username: username } });
     if (user) {
@@ -27,53 +27,52 @@ const newUser = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
             msg: `A user with the username ${username} already exists`
         });
     }
-    const path = require('path');
-    var filenameTimestamp;
-    const storage = multer_1.default.diskStorage({
-        destination: path.join(__dirname, '../../galeria'),
-        filename: (req, file, cb) => {
-            filenameTimestamp = Date.now();
-            cb(null, `${filenameTimestamp}-${file.originalname}`);
-        },
+    const matches = avatar.match(/^data:(.+);base64,(.+)$/);
+    const base64Image = matches[2];
+    const buffer = Buffer.from(base64Image, 'base64');
+    const fileExtension = matches[1].split('/')[1];
+    const fs = require('fs');
+    const timestamp = Date.now();
+    const fileName = `${timestamp}.${fileExtension}`;
+    fs.writeFile(__dirname + `../../galeria/${timestamp}.` + fileExtension, buffer, (err) => {
+        if (err)
+            throw err;
+        console.log('The file has been saved!');
     });
-    const upload = (0, multer_1.default)({ storage: storage });
-    exports.upload = upload.single('image');
-    exports.uploadFile = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        //const avatar = `${filenameTimestamp}-${req.file?.originalname}`;
+        //console.log("Contenido de avatar" + avatar);
+        const { name, password, date, gender, username } = req.body;
+        const hashedPassword = yield bcrypt_1.default.hash(password, 10);
+        //GUARDAR USUARIO
         try {
-            const avatar = `${filenameTimestamp}-${req.file.originalname}`;
-            console.log("Contenido de avatar" + avatar);
-            const { name, password, date, gender, username } = req.body;
-            const hashedPassword = yield bcrypt_1.default.hash(password, 10);
-            //GUARDAR USUARIO
-            try {
-                yield user_1.User.create({
-                    avatar: avatar,
-                    name: name,
-                    password: hashedPassword,
-                    date: date,
-                    gender: gender,
-                    username: username
-                });
-                res.json({
-                    msg: `User ${username} created successfully!`
-                });
-            }
-            catch (error) {
-                console.log("Primer error" + error);
-                res.status(400).json({
-                    msg: 'Ocurrio un error',
-                    error
-                });
-            }
+            yield user_1.User.create({
+                avatar: fileName,
+                name: name,
+                password: hashedPassword,
+                date: date,
+                gender: gender,
+                username: username
+            });
+            res.json({
+                msg: `User ${username} created successfully!`
+            });
         }
         catch (error) {
-            console.log("Segundo error" + error);
+            console.log("Primer error" + error);
             res.status(400).json({
-                msg: 'Failed to load image',
+                msg: 'Ocurrio un error',
                 error
             });
         }
-    });
+    }
+    catch (error) {
+        console.log("Segundo error" + error);
+        res.status(400).json({
+            msg: 'Failed to load image',
+            error
+        });
+    }
 });
 exports.newUser = newUser;
 const loginUser = (req, res) => __awaiter(void 0, void 0, void 0, function* () {

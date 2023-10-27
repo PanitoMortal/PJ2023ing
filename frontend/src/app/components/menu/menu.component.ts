@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
 import { loginArr } from 'src/app/models/loginArr';
+import { ErrorService } from 'src/app/services/error.service';
 import { BackendserviceService } from 'src/app/services/httpAccess/backendservice.service';
 import { MenuService } from 'src/app/services/menu.service';
 
@@ -22,7 +23,7 @@ export class MenuComponent implements OnInit{
   usuario: string;
   mostrarRecetasPropias = false;
 
-  constructor( private router: Router, private backend: BackendserviceService, private sanitizer: DomSanitizer, private route: ActivatedRoute, private _menuService: MenuService){}
+  constructor( private router: Router, private backend: BackendserviceService, private sanitizer: DomSanitizer, private route: ActivatedRoute, private _menuService: MenuService, private _errorService: ErrorService){}
 
 
   ngOnInit(): void {
@@ -31,6 +32,7 @@ export class MenuComponent implements OnInit{
       const username = params.get('nameuser');
       this.usuario = username;
       console.log('Nombre de usuario:', username);
+      
 /*       if (username !== null) {
         this.backend.getAvatarImage(username).subscribe(
           response => {
@@ -55,8 +57,9 @@ export class MenuComponent implements OnInit{
 
 
   getMenu() {
-    this._menuService.getMenu(this.usuario).subscribe(data => {
+    this._menuService.getMenu().subscribe(data => {
       console.log(data);
+      //this.imageData = data.avatar;
     })
   }
 

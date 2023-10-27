@@ -11,6 +11,9 @@
 </head> 
  
 <body> 
+  <div *ngIf="show">
+
+  
     <mat-card class="example-card" id="contenido">
       <h1 id="titulo">Subir Receta</h1>
       <div id="DatosPersonales">
@@ -40,15 +43,15 @@
         <mat-card-content id="cont">
             <div id="DUsuario" >
                 <mat-form-field class="control" class="anchoDes">
-                <mat-label>Descripcion</mat-label>
-                <input type="text" matInput [(ngModel)]="descripcion">
+                <mat-label>Description</mat-label>
+                <input type="text" matInput [(ngModel)]="description">
                 </mat-form-field>
             </div>
         
             <div id="Dpass" >
                 <mat-form-field class="control" class="anchoDes">
                 <mat-label>Ingredietes</mat-label>
-                <input type="text" matInput [(ngModel)]="ingredientes" (keyup.enter)="agregarElemento()">
+                <input type="text" matInput [(ngModel)]="ingredients" (keyup.enter)="agregarElemento()">
                 </mat-form-field>
              </div>
 
@@ -91,13 +94,13 @@
   
 
         <mat-card-actions id="cont2" class="btn2">
-            <button mat-button (click)="NewUsuario('0ms', '0ms')">Registrar</button>
+            <button mat-button (click)="NewUsuario()">Subir receta</button>
         </mat-card-actions>
   
        <!-- ------------------------------------------------------------------------------------------------------------------------>
     </mat-card>
     
-
+  </div>
 </body>
 
 </html>

@@ -1,5 +1,5 @@
 export interface User {
-    avatar: File;
+    avatar: string;
     name: string;
     password: string;
     date: string;
