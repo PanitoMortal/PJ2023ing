@@ -13,9 +13,6 @@
    
         <span>Pagina Principal de {{usuario}} </span> 
         <span class="toolbar-item-spacer"></span>
-        <button mat-icon-button matTooltip="Mis Favoritos" >
-            <mat-icon>favorite</mat-icon>
-        </button>
         <button mat-icon-button (click)="SubirReceta()" matTooltip="Subir receta">
             <mat-icon>add_box</mat-icon>
         </button>
@@ -46,6 +43,22 @@
         </mat-sidenav-content>
     </mat-sidenav-container>
     
+
+
+
+    <div *ngFor="let receta of listRecipes" id="container">
+        <div class="recetas">
+            Uploaded by: {{receta.username}}
+            <h1> {{receta.name}}</h1><br>
+            <img src="http://localhost:8888/galeria/{{receta.img}}" width="400"><br>
+            <div class="summary" [innerHTML]="(receta.description)"></div>
+            <div class="ingredients">Ingredients: {{receta.ingredients}}</div>
+
+            <!-- <button mat-raised-button color="primary" (click)="goToRecipe(receta.id)">Ver Receta -></button> -->
+        </div>
+    </div>
+
+
     
 
     

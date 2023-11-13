@@ -49,4 +49,10 @@ body {
   border-radius: 20px;
   width: 180px;
   height: 45px;
+}
+
+#principal {
+  background-color: transparent;
+  cursor: pointer;
+  border: none;
 }/*# sourceMappingURL=login.component.css.map */

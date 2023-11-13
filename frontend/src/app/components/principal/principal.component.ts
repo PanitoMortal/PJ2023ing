@@ -1,9 +1,12 @@
 import { query } from '@angular/animations';
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
+import { PageEvent } from '@angular/material/paginator';
 import { DomSanitizer } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CargarScriptsService } from 'src/app/services/cargar-scripts.service';
 import { BackendserviceService } from 'src/app/services/httpAccess/backendservice.service';
+import { MatPaginator } from '@angular/material/paginator';
+
 
 @Component({
   selector: 'app-principal',
@@ -21,11 +24,10 @@ export class PrincipalComponent {
   recipe: string = '';
 
 
+
   constructor(private router: Router, private _CargaScripts:CargarScriptsService, private http: BackendserviceService, private route: ActivatedRoute){
     _CargaScripts.Carga(["randomRecipe"]);
   }
-
-
 
 
     ngOnInit() {

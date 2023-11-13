@@ -50,6 +50,8 @@ import { AddTokenInterceptor } from './utils/add-token.interceptor';
 import { RecetasPropiasComponent } from './components/recetas-propias/recetas-propias.component';
 import { VerRecetasSubidasComponent } from './components/ver-recetas-subidas/ver-recetas-subidas.component';
 import { AcerdaDeComponent } from './components/acerda-de/acerda-de.component';
+
+
 @NgModule({
   declarations: [
     AppComponent,

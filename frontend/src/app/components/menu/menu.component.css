@@ -3,6 +3,8 @@ body {
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;
+  background-attachment: fixed;
+  height: 5300px;
 }
 
 .toolbar-item-spacer {
@@ -10,7 +12,6 @@ body {
 }
 
 .app-container {
-  height: 90%;
   margin: 0;
   background-color: rgba(0, 0, 0, 0.5);
   color: white;
@@ -47,6 +48,27 @@ body {
   color: white;
 }
 
-.icon {
+#container {
   background-color: rgba(0, 0, 0, 0.5);
+  margin-top: 30px;
+  margin-left: 300px;
+  margin-right: 300px;
+}
+#container .recetas {
+  display: flex;
+  flex-direction: column;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+}
+#container .recetas h1 {
+  font-size: 28px;
+  margin: 5px;
+  color: white;
+  font-family: fantasy;
+}
+#container .recetas img {
+  align-self: center;
+}
+#container .recetas .summary {
+  font-weight: normal;
 }/*# sourceMappingURL=menu.component.css.map */

@@ -54,7 +54,9 @@ export class LoginComponent implements OnInit {
     })
   }
 
-
+  principal(){
+    this.router.navigateByUrl('/principal');
+  }
 
 
   NewUsuario(){

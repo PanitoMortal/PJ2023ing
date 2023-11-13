@@ -11,43 +11,50 @@
     <title>Document</title> 
 </head> 
  
-<body *ngIf="recipeInfo"> 
+<body> 
     <mat-card class="example-card" id="contenido">
       <h1 id="titulo">Recetas Subidas</h1>
-      <div id="DatosPersonales">
-        <!-- ------------------------------------------------------------------------------------------------------------------------>
-        <div class="dropzone" id="upload">
-            <img [src]="imagenRuta" alt="Descripción de la imagen">
-        </div>
+      <div *ngFor="let info of lista">
+        <div id="DatosPersonales">
           <!-- ------------------------------------------------------------------------------------------------------------------------>
-        <mat-card-content id="cont">
-          <div id="formulario" >
-            <mat-form-field class="control" class="ancho">
-              <mat-label>Nombre de la Receta</mat-label>
-              <mat-icon matPrefix>fastfood</mat-icon>
-              <input type="text" matInput [value]="recipeInfo.name" readonly>
-            </mat-form-field>
+          <div class="dropzone" id="upload">
+              <img [src]=" 'http://localhost:8888/galeria/'+info.img " alt="Descripción de la imagen">
           </div>
+            <!-- ------------------------------------------------------------------------------------------------------------------------>
+          <mat-card-content id="cont">
+            <div id="formulario" >
+              <mat-form-field class="control" class="ancho">
+                <mat-label>Nombre de la Receta</mat-label>
+                <mat-icon matPrefix>fastfood</mat-icon>
+                <input type="text" matInput [value]="info.name" readonly>
+              </mat-form-field>
+            </div>
+  
+            <div id="formulario" >
+              <mat-form-field class="control" class="ancho1">
+                <mat-label>Descripción</mat-label>
+                <input type="text" matInput [value]="info.description" readonly >
+              </mat-form-field>
+            </div>
+  
+          </mat-card-content>
+        </div>
+  
+  
+        <div class="ancho2">
+          <mat-label>Ingredientes</mat-label>
+          <ul>
+              <li> {{ info.ingredients }}</li>
+            </ul>
+        </div>
+        <br><br>
 
-          <div id="formulario" >
-            <mat-form-field class="control" class="ancho1">
-              <mat-label>Descripción</mat-label>
-              <input type="text" matInput [value]="recipeInfo.description" readonly >
-            </mat-form-field>
-          </div>
-
-        </mat-card-content>
       </div>
 
-
-      <div class="ancho2">
-        <mat-label>Ingredientes</mat-label>
-        <ul>
-            <li *ngFor="let elemento of palabrasSeparadas"> {{ elemento }}</li>
-          </ul>
-      </div>
       <!-- ------------------------------------------------------------------------------------------------------------------------>
-
+      <mat-card-actions id="cont2">
+        <button mat-button (click)="regresar()" class="btn" style ="background-color: aliceblue;">Regresar</button>
+      </mat-card-actions>
   
        <!-- ------------------------------------------------------------------------------------------------------------------------>
     </mat-card>

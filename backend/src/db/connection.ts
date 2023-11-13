@@ -1,8 +1,8 @@
 import { Sequelize } from "sequelize";
 
-const sequelize = new Sequelize('pj2023', 'root', '', {
+const sequelize = new Sequelize('pj', 'root', '1234', {
     host:'localhost',
-    port: 3306,
+    port: 8080,
     dialect: 'mysql'
 })
 

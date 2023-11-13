@@ -91,7 +91,7 @@ body {
 }
 
 #container {
-  background-color: gainsboro;
+  background-color: rgba(0, 0, 0, 0.5);
   margin-top: 30px;
   margin-left: 300px;
   margin-right: 300px;
@@ -99,11 +99,13 @@ body {
 #container .recetas {
   display: flex;
   flex-direction: column;
-  background-color: aliceblue;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
 }
 #container .recetas h1 {
   font-size: 28px;
   margin: 5px;
+  color: white;
   font-family: fantasy;
 }
 #container .recetas img {

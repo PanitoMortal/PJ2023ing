@@ -69,6 +69,7 @@ export class BackendserviceService {
     return this.http.post<login>(domain + "/new_user", formData, { headers });
   }
 
+  
 
 
   

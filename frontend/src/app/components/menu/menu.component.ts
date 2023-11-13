@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Recipe } from 'src/app/interfaces/recipe';
 import { loginArr } from 'src/app/models/loginArr';
 import { VerMenuService } from 'src/app/services/VerMenu.service';
 import { ErrorService } from 'src/app/services/error.service';
@@ -25,6 +26,8 @@ export class MenuComponent implements OnInit{
   mostrarRecetasPropias = false;
   imagenRuta: any;
   avatar: string;
+  listRecipes: Recipe[] = [];
+
 
   constructor( private router: Router, private backend: BackendserviceService, private sanitizer: DomSanitizer, private route: ActivatedRoute, private _menuService: MenuService, private _errorService: ErrorService, private verMenuService: VerMenuService){}
 
@@ -38,6 +41,7 @@ export class MenuComponent implements OnInit{
    
     });
     this.getMenu();
+    this.getRecipes();
 
   }
 
@@ -56,6 +60,13 @@ export class MenuComponent implements OnInit{
     )
   }
 
+  getRecipes() {
+    this._menuService.getRecipes().subscribe(data => {
+      this.listRecipes = data;
+
+      console.log(this.listRecipes);
+    })
+  }
 
   SubirReceta(){
     this.mostrarRecetasPropias = !this.mostrarRecetasPropias;
@@ -71,7 +82,6 @@ export class MenuComponent implements OnInit{
   }
 
   getImage(){
-    
     this.verMenuService.getImagen(this.avatar).subscribe(
       data => {
         // Convierte el Blob a una URL segura para mostrar la imagen

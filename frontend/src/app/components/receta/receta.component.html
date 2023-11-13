@@ -45,21 +45,31 @@
       
       <div id="container">
         <div class="recetas">
-            <h1> {{info.title}}</h1><br>
-            <img src="{{info.image}}" width="400"><br>
-            <div class="summary" [innerHTML]="info.summary"></div><br><br>
-            <b style="font-size: large;">Instructions: </b>
-            <div class="instructions" [innerHTML]="info.instructions"></div><br>
-            <b style="font-size: large;">Ingredients: </b>
-            <div class="ingredients" *ngFor="let ingredient of info.extendedIngredients">
-                <div class="ingredient">
-                    <img src="https://spoonacular.com/cdn/ingredients_100x100/{{ingredient.image}}" width="100"><br>
-                    {{ingredient.name}}
-                </div>
-            </div>
+          <h1>{{info.title}}</h1><br>
+          <img src="{{info.image}}" width="400"><br>
+          <div class="summary" [innerHTML]="info.summary"></div><br><br>
+          <b style="font-size: large;">Instructions: </b>
+          <div class="instructions" [innerHTML]="info.instructions"></div><br>
+          <b style="font-size: large;">Ingredients: </b>
+      
+          <table class="ingredients-table">
+            <thead>
+              <tr>
+                <th>Image</th>
+                <th>Name</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let ingredient of info.extendedIngredients">
+                <td>
+                  <img src="https://spoonacular.com/cdn/ingredients_100x100/{{ingredient.image}}" width="100" alt="{{ingredient.name}} image">
+                </td>
+                <td>{{ingredient.name}}</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
-        
-    </div>
+      </div>
 
 
 

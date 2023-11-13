@@ -1,6 +1,7 @@
 import { StickyDirection } from '@angular/cdk/table';
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Recipe } from 'src/app/interfaces/recipe';
 import { VerMenuService } from 'src/app/services/VerMenu.service';
 
 @Component({
@@ -16,7 +17,8 @@ export class VerRecetasSubidasComponent implements OnInit{
   nombre_comida: string="";
   user_name: string="";
   palabrasSeparadas: string[];
-  constructor(private verMenuService: VerMenuService, private route: ActivatedRoute){}
+  lista: Recipe[] = [];
+  constructor(private verMenuService: VerMenuService, private route: ActivatedRoute, private router: Router){}
   
   ngOnInit(): void {
     this.route.paramMap.subscribe(params => {
@@ -32,6 +34,8 @@ export class VerRecetasSubidasComponent implements OnInit{
     
     this.verMenuService.getReceta(this.user_name).subscribe(
       (data) => {
+        this.lista = data.RecipeInfo;
+        console.log(this.lista);
         this.recipeInfo = data.RecipeInfo;
         this.nombre_comida = data.RecipeInfo.name
         this.nombre_imagen = data.RecipeInfo.img;
@@ -58,6 +62,10 @@ export class VerRecetasSubidasComponent implements OnInit{
         console.error(error);
       }
     );
+  }
+
+  regresar() {
+    this.router.navigateByUrl('/menu/'+this.user_name);
   }
 
 

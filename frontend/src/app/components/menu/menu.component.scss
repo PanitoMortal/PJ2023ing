@@ -3,6 +3,9 @@ body{
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center center;
+    background-attachment: fixed;
+    height: 5300px;
+    
  
 }
 
@@ -11,7 +14,6 @@ body{
 }
 
 .app-container {
-    height: 90%;
     margin: 0;
     background-color: rgba(0, 0, 0, 0.5);
     color: white;
@@ -48,6 +50,28 @@ body{
     color: white;
 }
 
-.icon{
-    background-color: rgba(0, 0, 0, 0.5);   
+#container{
+    background-color:  rgba(0, 0, 0, 0.5);
+    margin-top: 30px;
+    margin-left: 300px;
+    margin-right: 300px;
+    .recetas{
+        display: flex;
+        flex-direction: column;
+        background-color:  rgba(0, 0, 0, 0.5);
+        color: white;
+        h1{
+            font-size: 28px;
+            margin: 5px;
+            color: white;
+            font-family: fantasy;
+        }
+        img{
+            align-self: center;
+        }
+        .summary{
+            font-weight: normal;
+        }
+    }
+
 }
