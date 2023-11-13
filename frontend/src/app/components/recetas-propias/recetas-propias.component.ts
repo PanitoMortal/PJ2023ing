@@ -28,13 +28,14 @@ export class RecetasPropiasComponent implements OnInit {
   imgBase64: string | null = null;
   imgEat: File | null = null; // Para almacenar la imagen seleccionada
   imageUrl: string | ArrayBuffer | null = null; // Para mostrar la imagen
+  editarElemento: string | null = null;
+  user_name: string = "";
 
   constructor(private backend: BackendserviceService, public dialog: MatDialog, private router: Router, private toastr: ToastrService, private _recipeService: RecipeService, private _errorService: ErrorService, private route: ActivatedRoute ){}
   ngOnInit(): void {
     this.route.paramMap.subscribe(params => {
-      const username = params.get('nameuser');
-      this.username = username;
-      console.log('Nombre de usuario:', username);
+      this.user_name = params.get('nameuser');
+      console.log('Nombre de usuario:', this.user_name);
 
     });
 
@@ -56,7 +57,7 @@ export class RecetasPropiasComponent implements OnInit {
   }
 
 
-  NewUsuario(): void{
+  NewRecipe(): void{
     if(this.name == '' || this.description == '') {
       this.toastr.error('All fields are required');
       return;
@@ -68,7 +69,8 @@ export class RecetasPropiasComponent implements OnInit {
       img: this.imgBase64,
       name: this.name,
       description: this.description,
-      ingredients: ing
+      ingredients: ing,
+      username: this.user_name
     }
     this.show = false;
     this._recipeService.newRecipe(recipe).subscribe({
@@ -85,7 +87,7 @@ export class RecetasPropiasComponent implements OnInit {
   }
 
 
-  displayedColumns: string[] = ['Ingredientes', 'Eliminar', 'Editar'];
+  displayedColumns: string[] = ['Ingredientes', 'Eliminar'];
   dataSource = this.elementosTabla;
 
   agregarElemento() {
@@ -111,7 +113,8 @@ export class RecetasPropiasComponent implements OnInit {
   }
   
   Editar(nombre: string){
-    
+    this.editarElemento = nombre;
+    console.log(nombre);
   }
 
 }

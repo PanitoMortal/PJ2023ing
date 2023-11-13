@@ -9,18 +9,18 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.getUser = void 0;
-const user_1 = require("../models/user");
-const getUser = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const { username } = req.query;
-    const userInfo = yield user_1.User.findOne({ where: { username: username } });
-    if (!userInfo) {
+exports.getViewRecipe = void 0;
+const recipe_1 = require("../models/recipe");
+const getViewRecipe = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const { food_name } = req.query;
+    const RecipeInfo = yield recipe_1.Recipe.findOne({ where: { username: food_name } });
+    if (!RecipeInfo) {
         return res.status(400).json({
-            msg: `There is no user with the name ${username}`
+            msg: `There is no user with the name ${food_name}`
         });
     }
     console.log("informacion: ");
-    console.log(userInfo);
-    res.json({ userInfo });
+    console.log(RecipeInfo);
+    res.json({ RecipeInfo });
 });
-exports.getUser = getUser;
+exports.getViewRecipe = getViewRecipe;

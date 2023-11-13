@@ -2,7 +2,7 @@ import { Request, Response } from 'express';
 import { User } from '../models/user';
 
 export const getUser = async (req: Request, res: Response) => {
-    const { username } = req.body;
+    const { username } = req.query;
 
     const userInfo: any = await User.findOne({  where: { username: username } });
     if(!userInfo) {
@@ -10,8 +10,7 @@ export const getUser = async (req: Request, res: Response) => {
             msg: `There is no user with the name ${username}`
         })
     } 
-
-
+    console.log("informacion: ");
     console.log(userInfo);
     res.json({userInfo});
 }

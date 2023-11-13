@@ -18,6 +18,9 @@ export const Recipe = sequelize.define('recipes', {
     },
     ingredients: {
         type: DataTypes.STRING
-    },    
+    },
+    username: {
+        type: DataTypes.STRING
+    },
 
 }, )

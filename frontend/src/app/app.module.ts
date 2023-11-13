@@ -6,7 +6,6 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';
 import { UserComponent } from './components/user/user.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { ComicComponent } from './components/comic/comic.component';
 import { TablaComponent } from './components/tabla/tabla.component';
 import { DialogComponent } from './components/dialog/dialog.component';
 import {MatDialogModule} from '@angular/material/dialog';
@@ -49,12 +48,13 @@ import { SpinnerComponent } from './shared/spinner/spinner.component';
 import { ToastrModule } from 'ngx-toastr';
 import { AddTokenInterceptor } from './utils/add-token.interceptor';
 import { RecetasPropiasComponent } from './components/recetas-propias/recetas-propias.component';
+import { VerRecetasSubidasComponent } from './components/ver-recetas-subidas/ver-recetas-subidas.component';
+import { AcerdaDeComponent } from './components/acerda-de/acerda-de.component';
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     UserComponent,
-    ComicComponent,
     TablaComponent,
     DialogComponent,
     DialogErrorComponent,
@@ -67,7 +67,9 @@ import { RecetasPropiasComponent } from './components/recetas-propias/recetas-pr
     ExplorarComponent,
     RecetaComponent,
     SpinnerComponent,
-    RecetasPropiasComponent
+    RecetasPropiasComponent,
+    VerRecetasSubidasComponent,
+    AcerdaDeComponent
   ],
   imports: [
     BrowserModule,

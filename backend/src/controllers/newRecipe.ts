@@ -3,7 +3,7 @@ import { Recipe } from '../models/recipe';
 import { Request, Response} from 'express';
 
 export const newRecipe = async(req: Request, res: Response) => {
-    const { img, name, description, ingredients } = req.body;
+    const { img, name, description, ingredients, username } = req.body;
 
 
     const matches = img.match(/^data:(.+);base64,(.+)$/);
@@ -23,7 +23,8 @@ export const newRecipe = async(req: Request, res: Response) => {
             img: fileName,
             name: name,
             description: description,
-            ingredients: ingredients
+            ingredients: ingredients,
+            username:  username
         })
     } catch (error) {
         res.status(400).json({

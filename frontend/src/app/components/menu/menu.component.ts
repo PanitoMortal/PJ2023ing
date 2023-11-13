@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
 import { loginArr } from 'src/app/models/loginArr';
+import { VerMenuService } from 'src/app/services/VerMenu.service';
 import { ErrorService } from 'src/app/services/error.service';
 import { BackendserviceService } from 'src/app/services/httpAccess/backendservice.service';
 import { MenuService } from 'src/app/services/menu.service';
@@ -22,45 +23,37 @@ export class MenuComponent implements OnInit{
   genero: string="";
   usuario: string;
   mostrarRecetasPropias = false;
+  imagenRuta: any;
+  avatar: string;
 
-  constructor( private router: Router, private backend: BackendserviceService, private sanitizer: DomSanitizer, private route: ActivatedRoute, private _menuService: MenuService, private _errorService: ErrorService){}
+  constructor( private router: Router, private backend: BackendserviceService, private sanitizer: DomSanitizer, private route: ActivatedRoute, private _menuService: MenuService, private _errorService: ErrorService, private verMenuService: VerMenuService){}
 
 
   ngOnInit(): void {
-    this.getMenu();
+    
     this.route.paramMap.subscribe(params => {
       const username = params.get('nameuser');
       this.usuario = username;
       console.log('Nombre de usuario:', username);
-      
-/*       if (username !== null) {
-        this.backend.getAvatarImage(username).subscribe(
-          response => {
-            if (response.status === 1) {
-              this.imageData = response.imagenBase64;
-              this.nombre = response.nombre;
-              this.fecha = response.fecha;
-              this.genero = response.genero;
-              this.usuario = response.usuario;
-              console.log(response)
-            } else {
-              console.error('Error: ', response.mensaje);
-            }
-          },
-          error => console.error('Error fetching image:', error)
-        );
-      } else {
-        console.log('El parámetro "nameuser" es nulo.');
-      } */
+   
     });
+    this.getMenu();
+
   }
 
 
   getMenu() {
-    this._menuService.getMenu().subscribe(data => {
-      console.log(data);
-      //this.imageData = data.avatar;
-    })
+    this._menuService.getMenu(this.usuario).subscribe(
+      (data) => {
+        this.avatar = data.userInfo.avatar;
+
+        console.log(this.avatar);
+        this.getImage();
+      },
+      (error) => {
+        console.error('Error fetching recipe information:', error);
+      }
+    )
   }
 
 
@@ -73,6 +66,22 @@ export class MenuComponent implements OnInit{
     this.router.navigate(['/login']);
   }
 
+  VerReceta(){
+    this.router.navigate([`/verReceta/${this.usuario}`]);
+  }
+
+  getImage(){
+    
+    this.verMenuService.getImagen(this.avatar).subscribe(
+      data => {
+        // Convierte el Blob a una URL segura para mostrar la imagen
+        this.imagenRuta = URL.createObjectURL(data);
+      },
+      error => {
+        console.error(error);
+      }
+    );
+  }
   
 
 }

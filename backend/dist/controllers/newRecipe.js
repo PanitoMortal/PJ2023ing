@@ -12,7 +12,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.newRecipe = void 0;
 const recipe_1 = require("../models/recipe");
 const newRecipe = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const { img, name, description, ingredients } = req.body;
+    const { img, name, description, ingredients, username } = req.body;
     const matches = img.match(/^data:(.+);base64,(.+)$/);
     const base64Image = matches[2];
     const buffer = Buffer.from(base64Image, 'base64');
@@ -30,7 +30,8 @@ const newRecipe = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
             img: fileName,
             name: name,
             description: description,
-            ingredients: ingredients
+            ingredients: ingredients,
+            username: username
         });
     }
     catch (error) {

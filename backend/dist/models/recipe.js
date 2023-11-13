@@ -24,4 +24,7 @@ exports.Recipe = connection_1.default.define('recipes', {
     ingredients: {
         type: sequelize_1.DataTypes.STRING
     },
+    username: {
+        type: sequelize_1.DataTypes.STRING
+    },
 });

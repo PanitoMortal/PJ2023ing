@@ -122,4 +122,9 @@ export class ExplorarComponent {
   principal(){
     this.router.navigateByUrl('/principal');
   }
+
+  AcercaDe(){
+    this.router.navigateByUrl('/acerca_de');
+  }
+
 }

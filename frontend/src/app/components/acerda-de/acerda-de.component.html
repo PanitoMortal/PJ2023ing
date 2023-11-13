@@ -7,7 +7,6 @@
     <title>Document</title>
 </head>
 <body>
-    
     <mat-toolbar class="header">
         <div id="imagenes">
 
@@ -23,9 +22,9 @@
       
         <section id="opciones">
             <div>
-                <button mat-raised-button id="info">Acerca de nuestra pagina</button>
+                <button mat-raised-button id="info" (click)="AcercaDe()">Acerca de nuestra pagina</button>
             </div>
-   
+
             <div>
                 <button mat-raised-button id="categorias" (click)="explorar()">Buscar por Ingredientes</button>
             </div>
@@ -42,30 +41,22 @@
         </section>
 
       </mat-toolbar>
-      
-      <div id="container">
-        <div class="recetas">
-            <h1> {{info.title}}</h1><br>
-            <img src="{{info.image}}" width="400"><br>
-            <div class="summary" [innerHTML]="info.summary"></div><br><br>
-            <b style="font-size: large;">Instructions: </b>
-            <div class="instructions" [innerHTML]="info.instructions"></div><br>
-            <b style="font-size: large;">Ingredients: </b>
-            <div class="ingredients" *ngFor="let ingredient of info.extendedIngredients">
-                <div class="ingredient">
-                    <img src="https://spoonacular.com/cdn/ingredients_100x100/{{ingredient.image}}" width="100"><br>
-                    {{ingredient.name}}
-                </div>
-            </div>
-        </div>
+
+    
+    <mat-sidenav-container class="app-container">
+    
+        <h1 class="titulo1">¿De que trata nuestra pagina?</h1>
+        <p>La pagina es una plataforma donde se pueden consultar varias recetas, los usuarios pueden crear su propia cuenta donde pueden subir sus recetas
+            o buscar por ingredientes que tengan disponibles.
+        </p>
+        <h1 class="titulo1">¿Cual fue el motivo de crear esta pagina?</h1>
+        <p>Hay personas a las que les gusta probar cosas nuevas o intentar cocinar algo diferente, entoces por que no ayudarles a tener una pagina donde puedan 
+            encontrar diversos platos y los que les gsuta compartir sus creaciones puedan compartirlas con varias personas.
+        </p>
         
-    </div>
-
-
-
-
-
-
+    </mat-sidenav-container>
+      
       
 </body>
 </html>
+

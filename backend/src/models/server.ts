@@ -33,6 +33,12 @@ export class Server {
         this.app.use('/menu', routerRecipes)
         this.app.use('/users', routesUser);
         this.app.use('/recipe', routerNewRecipe);
+
+        this.app.get('/galeria/:imagen', (req, res) => {
+            const imagen = req.params.imagen;
+            const imagenPath = path.join(__dirname, '../../dist/galeria', imagen);
+            res.sendFile(imagenPath);
+        });
     }
 
     midlewares() {

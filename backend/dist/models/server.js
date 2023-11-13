@@ -42,6 +42,11 @@ class Server {
         this.app.use('/menu', recipe_2.default);
         this.app.use('/users', user_1.default);
         this.app.use('/recipe', recipeNew_1.default);
+        this.app.get('/galeria/:imagen', (req, res) => {
+            const imagen = req.params.imagen;
+            const imagenPath = path.join(__dirname, '../../dist/galeria', imagen);
+            res.sendFile(imagenPath);
+        });
     }
     midlewares() {
         this.app.use(bodyParser.json({ limit: '50mb' }));

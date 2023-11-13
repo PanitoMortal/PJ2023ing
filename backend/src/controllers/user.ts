@@ -6,7 +6,7 @@ import  Multer  from "multer";
 
 
 export const newUser = async (req: Request, res: Response) => {
-    console.log(req.body);
+    //console.log(req.body);
 
     const { username }  = req.body;
 
@@ -80,7 +80,7 @@ export const newUser = async (req: Request, res: Response) => {
 
 
 export const loginUser = async (req: Request, res: Response) => {
-    console.log(req.body);
+    //console.log(req.body);
 
     const { username, password } = req.body;
 

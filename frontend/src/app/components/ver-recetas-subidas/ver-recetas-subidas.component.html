@@ -1,0 +1,57 @@
+
+<!DOCTYPE html> 
+<html lang="en"> 
+<head> 
+    <meta charset="UTF-8"> 
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> 
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> 
+     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> 
+    <title>Document</title> 
+</head> 
+ 
+<body *ngIf="recipeInfo"> 
+    <mat-card class="example-card" id="contenido">
+      <h1 id="titulo">Recetas Subidas</h1>
+      <div id="DatosPersonales">
+        <!-- ------------------------------------------------------------------------------------------------------------------------>
+        <div class="dropzone" id="upload">
+            <img [src]="imagenRuta" alt="Descripción de la imagen">
+        </div>
+          <!-- ------------------------------------------------------------------------------------------------------------------------>
+        <mat-card-content id="cont">
+          <div id="formulario" >
+            <mat-form-field class="control" class="ancho">
+              <mat-label>Nombre de la Receta</mat-label>
+              <mat-icon matPrefix>fastfood</mat-icon>
+              <input type="text" matInput [value]="recipeInfo.name" readonly>
+            </mat-form-field>
+          </div>
+
+          <div id="formulario" >
+            <mat-form-field class="control" class="ancho1">
+              <mat-label>Descripción</mat-label>
+              <input type="text" matInput [value]="recipeInfo.description" readonly >
+            </mat-form-field>
+          </div>
+
+        </mat-card-content>
+      </div>
+
+
+      <div class="ancho2">
+        <mat-label>Ingredientes</mat-label>
+        <ul>
+            <li *ngFor="let elemento of palabrasSeparadas"> {{ elemento }}</li>
+          </ul>
+      </div>
+      <!-- ------------------------------------------------------------------------------------------------------------------------>
+
+  
+       <!-- ------------------------------------------------------------------------------------------------------------------------>
+    </mat-card>
+
+</body>
+
+</html>
